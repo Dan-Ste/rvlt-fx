@@ -1,16 +1,13 @@
-import initialState from './initialState';
 import {FETCH_STUFF, RECEIVE_STUFF} from '../actions/actionTypes';
 
-export default function stuff(state = initialState.stuff, action) {
+export default function stuffs(state = ['sdfsfd', 'sdfsdf'], action) {;
   let newState;
   switch (action.type) {
     case FETCH_STUFF:
-      console.log('FETCH_STUFF Action')
-      return action;
     case RECEIVE_STUFF:
-      newState = action.stuff;
-      console.log('RECEIVE_STUFF Action')
-      return newState;
+      return Object.assign({}, state, {
+        stuffs: action.stuffs
+      })
     default:
       return state;
   }
