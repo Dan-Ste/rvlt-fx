@@ -1,6 +1,6 @@
 import initialState from '../store/initialState';
 
-export default function currency(state = initialState.currencies, action) {;
+export default function accounts(state = initialState.accounts, action) {;
   switch (action.type) {
     default:
       return state;
