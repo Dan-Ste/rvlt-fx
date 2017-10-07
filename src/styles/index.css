@@ -1,0 +1,30 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+@import "~normalize.css/normalize.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+.app {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 50%;
+  background: linear-gradient(to right, #1488cc, #2b32b2);
+  background: #1488cc;
+}
+
+.slick-slider {
+  height: 100%;
+}
+
+.slick-dots {
+  bottom: 40px;
+}
