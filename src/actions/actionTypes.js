@@ -1,2 +1,2 @@
-export const FETCH_STUFF = 'FETCH_STUFF';
-export const RECEIVE_STUFF = 'RECEIVE_STUFF';
+export const FETCH_RATES = 'FETCH_RATES';
+export const RECEIVE_RATES = 'RECEIVE_RATES';
