@@ -1,4 +1,4 @@
-import * as types from './actionTypes';
+import { RECEIVE_RATES } from './actionTypes';
 
 const URL = 'https://openexchangerates.org/api/latest.json?app_id=9b97fcf761e04bc3864ad422a55d8136&symbols=EUR%2CGBP';
 const POLL_INTERVAL = 10000;
@@ -22,7 +22,7 @@ export default function receiveRates(json) {
 
   console.log(rates)
   return {
-    type: types.RECEIVE_RATES,
+    type: RECEIVE_RATES,
     rates
   };
 }

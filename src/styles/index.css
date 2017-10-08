@@ -23,8 +23,8 @@ html, body, #root {
   background: linear-gradient(to right, #1488cc, #2b32b2);
   color: white;
 }
-
-.slick-slider, .slick-list, .slick-track {
+ 
+.slick-list, .slick-track {
   height: 100%;
 }
 
@@ -36,7 +36,7 @@ html, body, #root {
   bottom: 40px;
 }
 
-.currency-slide {
+.account-slide {
   height: 100%;
 }
 
@@ -45,7 +45,7 @@ html, body, #root {
   bottom: 80%;
   right: 0;
   z-index: 10;
-  
+
   border: none;
   width: 50%;
   margin-right: 30px;

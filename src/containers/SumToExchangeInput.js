@@ -48,9 +48,9 @@ const mapDispatchToProps = (dispatch) => ({
   }
 })
 
-const ExchangeSumInput = connect(
+const SumToExchangeInput = connect(
   mapStateToProps,
   mapDispatchToProps
 )(ExchangeInput)
 
-export default ExchangeSumInput
+export default SumToExchangeInput

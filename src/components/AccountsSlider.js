@@ -1,52 +1,89 @@
 import React, { Component } from 'react';
 import Slider from 'react-slick'
-import AccountSlide from './AccountSlide'
 
 export class AccountsSlider extends Component {
+  buildRateString(fromSign, toSign, rate) {
+    if (!rate) {
+      return ''
+    } else {
+
+      return (
+        <div>
+          <span className="currency-sign">{fromSign}</span>
+          1 = {rate.toFixed(4)}
+          <span className="currency-sign">{toSign}</span>
+        </div>
+      )
+    }
+  }
+
+  showConvertedSum(sumToExchange, rate) {
+    if (sumToExchange) {
+      if (rate) {
+        return <div>{`+${sumToExchange}`}</div>
+      } else {
+        const exchangedSum = (sumToExchange * rate)
+          .toFixed(2)
+
+        return <div>{`+${exchangedSum}`}</div>
+      }
+    } else {
+      return ''
+    }
+  }
+
   render() {
     const {
       accounts,
-      accountIdFrom,
-      accountIdTo,
+      accountFrom,
+      accountTo,
+      rates,
       isExchangeFrom,
-      onSlideChange,
       sumToExchange,
-      rates
-    } = this.props;
-    
-    const accountFrom = accounts[accountIdFrom]
-    const accountTo = accounts[accountIdTo]
+      setAccountIdFrom,
+      setAccountIdTo
+    } = this.props
 
-    const currentSlideAccount = isExchangeFrom ?
+    const currentAccount = isExchangeFrom ?
       accountFrom :
       accountTo
 
-    const settings = {
+    const sliderSettings = {
       dots: true,
       infinite: true,
       speed: 350,
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: false,
-      adaptiveHeight: true,
-      initialSlide: Number(currentSlideAccount.id),
-      afterChange(nextIdx) {
-        onSlideChange(nextIdx)
+      initialSlide: Number(currentAccount.id),
+      afterChange(idx) {
+        if (isExchangeFrom) {
+          setAccountIdFrom(idx)
+        } else {
+          setAccountIdTo(idx)
+        }
       }
     }
 
+    let rateString
+    let convertedSum
+
+    if (!isExchangeFrom) {
+      const rateToFrom = rates[accountTo.currencyISO][accountFrom.currencyISO]
+      const rateFromTo = rates[accountFrom.currencyISO][accountTo.currencyISO]
+
+      rateString = this.buildRateString(accountFrom.currencySign, accountTo.currencySign, rateToFrom)
+      convertedSum = this.showConvertedSum(sumToExchange, rateFromTo)
+    }
+
     return (
-      <Slider {...settings}>
+      <Slider {...sliderSettings}>
         {accounts.map(account => {
-          return <div key={account.id}>
-                  <AccountSlide 
-                    {...account} 
-                    accountFrom={accountFrom} 
-                    accountTo={accountTo} 
-                    rates={rates} 
-                    isExchangeFrom={isExchangeFrom}
-                    sumToExchange={sumToExchange}
-                  />
+          return <div key={account.id} className="account-slide">
+                  <div>{account.currencyISO}</div>
+                  <div>You have {account.currencySign}{account.amount}</div>
+                  {rateString}
+                  {convertedSum}
                 </div>
         })}
       </Slider>
