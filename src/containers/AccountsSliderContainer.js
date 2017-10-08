@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import AccountsSlider from '../components/AccountsSlider'
 import { setAccountIdFrom, setAccountIdTo } from '../actions/accounts'
 
-const mapStateToProps = ({ accounts, accountIdTo, accountIdFrom, rates }, {isExchangeFrom}) => {
+const mapStateToProps = ({ accounts, accountIdTo, accountIdFrom, rates, sumTo, sumFrom }, { isExchangeFrom }) => {
   const accountFrom = accounts[accountIdFrom]
   const accountTo = accounts[accountIdTo]
 
@@ -11,6 +11,8 @@ const mapStateToProps = ({ accounts, accountIdTo, accountIdFrom, rates }, {isExc
     accountFrom,
     accountTo,
     rates,
+    sumTo,
+    sumFrom,
     isExchangeFrom
   }
 }

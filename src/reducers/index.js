@@ -2,9 +2,18 @@ import { combineReducers } from 'redux';
 import { accounts, accountIdFrom, accountIdTo } from './accounts';
 import rates from './rates';
 
-const sumToExchange = function(state = null, action) {
+const sumFrom = function(state = null, action) {
   switch (action.type) {
-    case 'SET_SUM_TO_EXCHANGE':
+    case 'SET_SUM_FROM':
+      return action.sum
+    default:
+      return state
+  }
+}
+
+const sumTo = function(state = null, action) {
+  switch (action.type) {
+    case 'SET_SUM_TO':
       return action.sum
     default:
       return state
@@ -16,7 +25,8 @@ const rootReducer = combineReducers({
   accountIdFrom,
   accountIdTo,
   rates,
-  sumToExchange
+  sumFrom,
+  sumTo
 });
 
 export default rootReducer;

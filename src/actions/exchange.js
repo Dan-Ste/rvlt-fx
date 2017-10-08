@@ -1,6 +1,13 @@
-export default function setSumToExchange (sum) {
+export const setSumFrom = sum => {
   return {
-    type: 'SET_SUM_TO_EXCHANGE',
+    type: 'SET_SUM_FROM',
+    sum
+  }
+}
+
+export const setSumTo = sum => {
+  return {
+    type: 'SET_SUM_TO',
     sum
   }
 }

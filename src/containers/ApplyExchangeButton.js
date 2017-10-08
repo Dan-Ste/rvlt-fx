@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import setSumToExchange from '../actions/exchange'
+import { updateAccountAmount } from '../actions/accounts'
 
 class ExchangeButton extends Component {
   constructor(props) {
@@ -11,12 +11,15 @@ class ExchangeButton extends Component {
 
   applyExchange() {
     const {
-      sumToExchange,
-      accountFrom,
-      accountTo
+      sumFrom,
+      sumTo,
+      accountIdFrom,
+      accountIdTo,
+      updateAccAmount
     } = this.props
 
-
+    updateAccAmount(accountIdFrom, sumFrom)
+    updateAccAmount(accountIdTo, sumTo)
   }
 
   render() {
@@ -30,17 +33,18 @@ class ExchangeButton extends Component {
   }
 }
 
-const mapStateToProps = ({ sumToExchange, accountIdFrom, accountIdTo }) => {
+const mapStateToProps = ({ sumFrom, sumTo, accountIdFrom, accountIdTo }) => {
   return {
-    sumToExchange,
-    accountFrom,
-    accountTo
+    sumFrom,
+    sumTo,
+    accountIdFrom,
+    accountIdTo
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  applyExchange: (sum) => {
-    dispatch(setSumToExchange(sum))
+  updateAccAmount: (accountId, amount) => {
+    dispatch(updateAccountAmount(accountId, amount))
   }
 })
 

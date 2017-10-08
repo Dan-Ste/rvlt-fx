@@ -17,5 +17,7 @@ export default {
       currencySign: '£',
       amount: '58.33'
     }
-  ]
+  ],
+  accountIdFrom: 0,
+  accountIdTo: 1
 }

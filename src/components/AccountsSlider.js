@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Slider from 'react-slick'
 
 export class AccountsSlider extends Component {
-  buildRateString(fromSign, toSign, rate) {
+  buildRateElem(fromSign, toSign, rate) {
     if (!rate) {
       return ''
     } else {
@@ -17,21 +17,6 @@ export class AccountsSlider extends Component {
     }
   }
 
-  showConvertedSum(sumToExchange, rate) {
-    if (sumToExchange) {
-      if (rate) {
-        return <div>{`+${sumToExchange}`}</div>
-      } else {
-        const exchangedSum = (sumToExchange * rate)
-          .toFixed(2)
-
-        return <div>{`+${exchangedSum}`}</div>
-      }
-    } else {
-      return ''
-    }
-  }
-
   render() {
     const {
       accounts,
@@ -39,7 +24,8 @@ export class AccountsSlider extends Component {
       accountTo,
       rates,
       isExchangeFrom,
-      sumToExchange,
+      sumTo,
+      sumFrom,
       setAccountIdFrom,
       setAccountIdTo
     } = this.props
@@ -65,15 +51,22 @@ export class AccountsSlider extends Component {
       }
     }
 
-    let rateString
+    let rateElem
     let convertedSum
 
     if (!isExchangeFrom) {
       const rateToFrom = rates[accountTo.currencyISO][accountFrom.currencyISO]
-      const rateFromTo = rates[accountFrom.currencyISO][accountTo.currencyISO]
 
-      rateString = this.buildRateString(accountFrom.currencySign, accountTo.currencySign, rateToFrom)
-      convertedSum = this.showConvertedSum(sumToExchange, rateFromTo)
+      rateElem = this.buildRateElem(accountFrom.currencySign, accountTo.currencySign, rateToFrom)
+
+      if (sumTo && sumFrom) {
+        convertedSum = sumTo === sumFrom ?
+          sumTo :
+          Number(sumTo)
+          .toFixed(2);
+
+        convertedSum = `+${convertedSum}`
+      }
     }
 
     return (
@@ -81,8 +74,8 @@ export class AccountsSlider extends Component {
         {accounts.map(account => {
           return <div key={account.id} className="account-slide">
                   <div>{account.currencyISO}</div>
-                  <div>You have {account.currencySign}{account.amount}</div>
-                  {rateString}
+                  <div>You have {account.currencySign}{Number(account.amount).toFixed(2)}</div>
+                  {rateElem}
                   {convertedSum}
                 </div>
         })}
