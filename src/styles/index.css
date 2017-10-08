@@ -10,15 +10,18 @@ body {
 
 html, body, #root {
   height: 100%;
+  overflow-y: hidden;
 }
 
 .app {
+  position: relative;
   height: 100%;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 50%;
   background: #1488cc;
   background: linear-gradient(to right, #1488cc, #2b32b2);
+  color: white;
 }
 
 .slick-slider, .slick-list, .slick-track {
@@ -35,4 +38,23 @@ html, body, #root {
 
 .currency-slide {
   height: 100%;
+}
+
+.exchange-input {
+  position: absolute;
+  bottom: 80%;
+  right: 0;
+  z-index: 10;
+  
+  border: none;
+  width: 50%;
+  margin-right: 30px;
+
+  background: transparent;
+  caret-color: white;
+  color: white;
+
+  text-align: right;
+  outline: none;
+  font-size: 3em;
 }

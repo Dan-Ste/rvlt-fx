@@ -1,5 +1,4 @@
 import { connect } from 'react-redux'
-// import { toggleTodo } from '../actions'
 import AccountsSlider from '../components/AccountsSlider'
 import { setAccountIdFrom } from '../actions/accounts'
 

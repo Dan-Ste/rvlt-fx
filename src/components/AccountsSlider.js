@@ -1,5 +1,4 @@
-import React from 'react'
-import { Component } from 'react'
+import React, { Component } from 'react';
 import Slider from 'react-slick'
 import AccountSlide from './AccountSlide'
 
@@ -11,9 +10,10 @@ export class AccountsSlider extends Component {
       accountIdTo,
       isExchangeFrom,
       onSlideChange,
+      sumToExchange,
       rates
     } = this.props;
-
+    
     const accountFrom = accounts[accountIdFrom]
     const accountTo = accounts[accountIdTo]
 
@@ -45,6 +45,7 @@ export class AccountsSlider extends Component {
                     accountTo={accountTo} 
                     rates={rates} 
                     isExchangeFrom={isExchangeFrom}
+                    sumToExchange={sumToExchange}
                   />
                 </div>
         })}

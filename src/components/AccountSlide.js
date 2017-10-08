@@ -1,8 +1,6 @@
-import React from 'react'
-import { Component } from 'react'
+import React, { Component } from 'react';
 
 export class AccountSlide extends Component {
-
   buildRateString(accountFrom, accountTo, isExchangeFrom, rates) {
     let rate
     let currencyLeft
@@ -36,6 +34,25 @@ export class AccountSlide extends Component {
     }
   }
 
+  showConvertedSum(sumToExchange, rates, accountFrom, accountTo) {
+    let rate
+    let exchangedSum
+
+    if (sumToExchange) {
+      if (accountFrom.currencyISO === accountTo.currencyISO) {
+        return <div>{`+${sumToExchange}`}</div>
+      } else {
+        rate = rates[accountFrom.currencyISO][accountTo.currencyISO]
+        exchangedSum = (sumToExchange * rate)
+          .toFixed(2)
+
+        return <div>{`+${exchangedSum}`}</div>
+      }
+    } else {
+      return ''
+    }
+  }
+
   render() {
     const {
       currencyISO,
@@ -44,6 +61,7 @@ export class AccountSlide extends Component {
       accountFrom,
       accountTo,
       isExchangeFrom,
+      sumToExchange,
       rates
     } = this.props
 
@@ -52,6 +70,7 @@ export class AccountSlide extends Component {
         <div>{currencyISO}</div>
         <div>You have {currencySign}{amount}</div>
         <div>{this.buildRateString(accountFrom, accountTo, isExchangeFrom, rates)}</div>
+        {this.showConvertedSum(sumToExchange, rates, accountFrom, accountTo)}
       </div>
     )
   }

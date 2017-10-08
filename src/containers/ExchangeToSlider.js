@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
-// import { toggleTodo } from '../actions'
 import AccountsSlider from '../components/AccountsSlider'
 import { setAccountIdTo } from '../actions/accounts'
 
-const mapStateToProps = ({ accounts, accountIdTo, accountIdFrom, rates }) => ({
+const mapStateToProps = ({ accounts, accountIdTo, accountIdFrom, rates, sumToExchange }) => ({
   accounts,
   accountIdTo,
   accountIdFrom,
+  sumToExchange,
   rates
 })
 

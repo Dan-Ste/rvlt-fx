@@ -1,6 +1,6 @@
 import * as types from './actionTypes';
 
-const URL = 'https://openexchangerates.org/api/latest.json?app_id=a2d5ba89cb044a51aa358f6aa98e2f5c&symbols=EUR%2CGBP';
+const URL = 'https://openexchangerates.org/api/latest.json?app_id=9b97fcf761e04bc3864ad422a55d8136&symbols=EUR%2CGBP';
 const POLL_INTERVAL = 10000;
 
 export default function receiveRates(json) {
@@ -44,7 +44,7 @@ export function fetchRates() {
             resolve(true)
           })
 
-        setTimeout(makeRequest, POLL_INTERVAL)
+        // setTimeout(makeRequest, POLL_INTERVAL)
       })()
     })
   }
