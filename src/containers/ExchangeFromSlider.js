@@ -1,13 +1,27 @@
 import { connect } from 'react-redux'
 // import { toggleTodo } from '../actions'
 import AccountsSlider from '../components/AccountsSlider'
+import { setAccountIdFrom } from '../actions/accounts'
 
-const mapStateToProps = (state) => ({
-  accounts: state.accounts
+const mapStateToProps = ({ accounts, accountIdTo, accountIdFrom, rates }) => {
+  return {
+    accounts,
+    accountIdTo,
+    accountIdFrom,
+    rates,
+    isExchangeFrom: true
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  onSlideChange: idx => {
+    dispatch(setAccountIdFrom(idx))
+  }
 })
 
 const ExchangeFromSlider = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(AccountsSlider)
 
 export default ExchangeFromSlider

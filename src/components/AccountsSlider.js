@@ -1,29 +1,51 @@
 import React from 'react'
-import { Component } from 'react';
-import Slider from 'react-slick';
-import AccountSlide from './AccountSlide';
+import { Component } from 'react'
+import Slider from 'react-slick'
+import AccountSlide from './AccountSlide'
 
 export class AccountsSlider extends Component {
-
   render() {
+    const {
+      accounts,
+      accountIdFrom,
+      accountIdTo,
+      isExchangeFrom,
+      onSlideChange,
+      rates
+    } = this.props;
+
+    const accountFrom = accounts[accountIdFrom]
+    const accountTo = accounts[accountIdTo]
+
+    const currentSlideAccount = isExchangeFrom ?
+      accountFrom :
+      accountTo
+
     const settings = {
       dots: true,
       infinite: true,
-      speed: 500,
+      speed: 350,
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: false,
       adaptiveHeight: true,
-      afterChange(index) {
-        console.log(index)
+      initialSlide: Number(currentSlideAccount.id),
+      afterChange(nextIdx) {
+        onSlideChange(nextIdx)
       }
-    };
+    }
 
     return (
       <Slider {...settings}>
-        {this.props.accounts.map(account => {
+        {accounts.map(account => {
           return <div key={account.id}>
-                  <AccountSlide {...account}/>
+                  <AccountSlide 
+                    {...account} 
+                    accountFrom={accountFrom} 
+                    accountTo={accountTo} 
+                    rates={rates} 
+                    isExchangeFrom={isExchangeFrom}
+                  />
                 </div>
         })}
       </Slider>
@@ -31,4 +53,4 @@ export class AccountsSlider extends Component {
   }
 }
 
-export default AccountsSlider;
+export default AccountsSlider

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ExchangeFromSlider from '../containers/ExchangeFromSlider';
+import ExchangeToSlider from '../containers/ExchangeToSlider';
 
 
 class App extends Component {
@@ -7,8 +8,8 @@ class App extends Component {
 
     return (
       <div className="app">
-          <ExchangeFromSlider />
-          <ExchangeFromSlider />
+        <ExchangeFromSlider />
+        <ExchangeToSlider />
       </div>
     );
   }
