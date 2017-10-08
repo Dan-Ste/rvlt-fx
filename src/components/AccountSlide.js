@@ -16,12 +16,12 @@ export class AccountSlide extends Component {
       return ''
     } else {
       if (isExchangeFrom) {
-        rate = rates[currencyISOFrom][currencyISOTo].toFixed(4)
+        rate = rates[currencyISOFrom][currencyISOTo]
         currencyLeft = currencySignFrom
         currencyRight = currencySignTo
 
       } else {
-        rate = rates[currencyISOTo][currencyISOFrom].toFixed(4)
+        rate = rates[currencyISOTo][currencyISOFrom]
         currencyLeft = currencySignTo
         currencyRight = currencySignFrom
       }
@@ -29,7 +29,7 @@ export class AccountSlide extends Component {
       return (
         <div>
           <span className="currency-sign">{currencyLeft}</span>
-          1 = {rate}
+          1 = {rate.toFixed(4)}
           <span className="currency-sign">{currencyRight}</span>
         </div>
       )
