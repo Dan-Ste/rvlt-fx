@@ -43,8 +43,8 @@ export function fetchRates() {
             dispatch(receiveRates(json))
             resolve(true)
           })
-          
-        setInterval(makeRequest, POLL_INTERVAL)
+
+        setTimeout(makeRequest, POLL_INTERVAL)
       })()
     })
   }
