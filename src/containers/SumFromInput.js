@@ -38,10 +38,10 @@ class SumFromInput extends Component {
   render() {
     return (
       <input 
+        value={this.props.sumFrom || ''}
         ref="exchangeInput"
         type="number"
         className="exchange-input"
-        max={5}
         onBlur={this.focusInput}
         onChange={this.handleChange}
       />
@@ -49,12 +49,13 @@ class SumFromInput extends Component {
   }
 }
 
-const mapStateToProps = ({ accounts, accountIdFrom, accountIdTo, rates }) => {
+const mapStateToProps = ({ accounts, accountIdFrom, accountIdTo, rates, sumFrom }) => {
   const accountFrom = accounts[accountIdFrom]
   const accountTo = accounts[accountIdTo]
   const rateFromTo = rates[accountFrom.currencyISO][accountTo.currencyISO]
 
   return {
+    sumFrom,
     rateFromTo
   }
 }

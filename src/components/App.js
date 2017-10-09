@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AccountsSliderContainer from '../containers/AccountsSliderContainer'
 import SumFromInput from '../containers/SumFromInput'
-import ApplyExchangeButton from '../containers/ApplyExchangeButton'
+import ApplyExchangeContainer from '../containers/ApplyExchangeContainer'
 
 class App extends Component {
   render() {
@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="app">
         <SumFromInput/>
-        <ApplyExchangeButton/>
+        <ApplyExchangeContainer/>
         <AccountsSliderContainer isExchangeFrom={true}/>
         <AccountsSliderContainer />
       </div>

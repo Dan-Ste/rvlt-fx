@@ -64,4 +64,14 @@ html, body, #root {
   top: 10px;
   right: 10px;
   z-index: 15;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background: transparent;
+}
+
+.apply-exchange:disabled {
+  color: gray;
+  cursor: default;
 }
