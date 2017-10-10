@@ -2,49 +2,35 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { setSumFrom, setSumTo } from '../actions/exchange'
 import convertSumByRate from '../utils/convertSumByRate'
+import CurrencyInput from 'react-currency-input';
 
 class SumFromInput extends Component {
   constructor(props) {
     super(props);
 
-    this.focusInput = this.focusInput.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
-
-  focusInput() {
-    this.refs.exchangeInput.focus()
-  }
-
-  componentDidMount() {
-    this.focusInput()
-  }
-
-  componentDidUpdate() {
-    this.handleChange()
-  }
-
-  handleChange() {
+  
+  handleChange(event, maskedValue, sumFrom) {
     const {
       rateFromTo,
       setExchangeSums
     } = this.props;
 
-    const sumFrom = Number(this.refs.exchangeInput.value)
     const sumTo = convertSumByRate(sumFrom, rateFromTo)
-
+    console.log(sumFrom,sumTo)
     setExchangeSums(sumFrom, sumTo)
   }
 
   render() {
     return (
-      <input 
-        value={this.props.sumFrom || ''}
-        ref="exchangeInput"
-        type="number"
-        className="exchange-input"
-        onBlur={this.focusInput}
-        onChange={this.handleChange}
-      />
+      <CurrencyInput 
+        value={this.props.sumFrom} 
+        allowEmpty={true} 
+        prefix="-" 
+        ref="exchangeInput" 
+        className="exchange-input" 
+        onChangeEvent={this.handleChange}/>  
     )
   }
 }
