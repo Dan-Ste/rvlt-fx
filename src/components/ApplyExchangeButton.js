@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class ApplyExchangeButton extends Component {
   constructor(props) {
@@ -34,6 +35,16 @@ class ApplyExchangeButton extends Component {
       </button>
     )
   }
+}
+
+ApplyExchangeButton.PropTypes = {
+  sumFrom: PropTypes.number,
+  sumTo: PropTypes.number,
+  accountIdFrom: PropTypes.number,
+  accountIdTo: PropTypes.number,
+  subtractSum: PropTypes.func,
+  addSum: PropTypes.func,
+  resetExchangeSums: PropTypes.func
 }
 
 export default ApplyExchangeButton

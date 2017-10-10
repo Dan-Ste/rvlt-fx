@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Slider from 'react-slick'
+import PropTypes from 'prop-types'
 
 export class AccountsSlider extends Component {
   buildRateElem(fromSign, toSign, rate) {
@@ -63,7 +64,7 @@ export class AccountsSlider extends Component {
         convertedSum = sumTo === sumFrom ?
           sumTo :
           Number(sumTo)
-          .toFixed(2);
+          .toFixed(2)
 
         convertedSum = `+${convertedSum}`
       }
@@ -82,6 +83,20 @@ export class AccountsSlider extends Component {
       </Slider>
     )
   }
+}
+
+AccountsSlider.propTypes = {
+  accounts: PropTypes.arrayOf(PropTypes.object),
+  accountFrom: PropTypes.object,
+  accountTo: PropTypes.object,
+  rates: PropTypes.object,
+  isExchangeFrom: PropTypes.boolean,
+  sumTo: PropTypes.number,
+  sumFrom: PropTypes.number,
+  setAccountIdFrom: PropTypes.number,
+  setAccountIdTo: PropTypes.number,
+  setAccountIdFrom:  PropTypes.func,
+  setAccountIdTo:  PropTypes.func
 }
 
 export default AccountsSlider
