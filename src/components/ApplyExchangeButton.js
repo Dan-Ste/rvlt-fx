@@ -12,17 +12,23 @@ class ApplyExchangeButton extends Component {
     const {
       sumFrom,
       sumTo,
-      accountIdFrom,
+      accountFrom,
       accountIdTo,
-      subtractSum,
-      addSum,
-      resetExchangeSums
+      subtractMoney,
+      addMoney,
+      resetExchangeSums,
+      onError
     } = this.props
 
-    subtractSum(accountIdFrom, sumFrom)
-    addSum(accountIdTo, sumTo)
+    // if there is not enough money on the account, dispatch an error
+    if (accountFrom.amount - sumFrom < 0) {
+      onError("You don't have enough money for the exchange")
+    } else {
+      subtractMoney(accountFrom.id, sumFrom)
+      addMoney(accountIdTo, sumTo)
 
-    resetExchangeSums()
+      resetExchangeSums()
+    }
   }
 
   render() {
@@ -42,9 +48,10 @@ ApplyExchangeButton.PropTypes = {
   sumTo: PropTypes.number,
   accountIdFrom: PropTypes.number,
   accountIdTo: PropTypes.number,
-  subtractSum: PropTypes.func,
-  addSum: PropTypes.func,
-  resetExchangeSums: PropTypes.func
+  subtractMoney: PropTypes.func,
+  addMoney: PropTypes.func,
+  resetExchangeSums: PropTypes.func,
+  onError: PropTypes.func,
 }
 
 export default ApplyExchangeButton

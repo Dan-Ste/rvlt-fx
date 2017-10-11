@@ -90,13 +90,11 @@ AccountsSlider.propTypes = {
   accountFrom: PropTypes.object,
   accountTo: PropTypes.object,
   rates: PropTypes.object,
-  isExchangeFrom: PropTypes.boolean,
+  isExchangeFrom: PropTypes.bool,
   sumTo: PropTypes.number,
   sumFrom: PropTypes.number,
-  setAccountIdFrom: PropTypes.number,
-  setAccountIdTo: PropTypes.number,
-  setAccountIdFrom:  PropTypes.func,
-  setAccountIdTo:  PropTypes.func
+  setAccountIdFrom: PropTypes.func,
+  setAccountIdTo: PropTypes.func
 }
 
 export default AccountsSlider

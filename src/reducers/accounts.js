@@ -2,17 +2,17 @@ import initialState from '../store/initialState';
 import {
   SET_ACCOUNT_ID_FROM,
   SET_ACCOUNT_ID_TO,
-  SUBTRACT_SUM_FROM_ACCOUNT_AMOUNT,
-  ADD_SUM_TO_ACCOUNT_AMOUNT
+  SUBTRACT_MONEY_FROM_ACCOUNT_AMOUNT,
+  ADD_MONEY_TO_ACCOUNT_AMOUNT
 } from '../actions/actionTypes'
 
 export const accounts = function(state = initialState.accounts, action) {
   switch (action.type) {
-    case SUBTRACT_SUM_FROM_ACCOUNT_AMOUNT:
+    case SUBTRACT_MONEY_FROM_ACCOUNT_AMOUNT:
       return state.map(account =>
         Number(account.id) === action.id ? { ...account, amount: account.amount - action.sum } : account
       )
-    case ADD_SUM_TO_ACCOUNT_AMOUNT:
+    case ADD_MONEY_TO_ACCOUNT_AMOUNT:
       return state.map(account =>
         Number(account.id) === action.id ? { ...account, amount: Number(account.amount) + action.sum } : account
       )

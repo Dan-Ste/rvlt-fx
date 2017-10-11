@@ -5,7 +5,6 @@ import ApplyExchangeContainer from '../containers/ApplyExchangeContainer'
 
 class App extends Component {
   render() {
-
     return (
       <div className="app">
         <SumFromInput/>
