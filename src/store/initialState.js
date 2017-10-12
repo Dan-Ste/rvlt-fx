@@ -1,21 +1,21 @@
 export default {
   accounts: [{
-      id: '0',
+      id: 0,
       currencyISO: 'USD',
       currencySign: '$',
-      amount: '25.51'
+      amount: 25.51
     },
     {
-      id: '1',
+      id: 1,
       currencyISO: 'EUR',
       currencySign: '€',
-      amount: '116.12'
+      amount: 116.12
     },
     {
-      id: '2',
+      id: 2,
       currencyISO: 'GBP',
       currencySign: '£',
-      amount: '58.33'
+      amount: 58.33
     }
   ],
   accountIdFrom: 0,
