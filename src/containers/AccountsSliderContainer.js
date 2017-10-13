@@ -1,6 +1,8 @@
 import { connect } from 'react-redux'
 import AccountsSlider from '../components/AccountsSlider'
 import { setAccountIdFrom, setAccountIdTo } from '../actions/accounts'
+import { setSumTo } from '../actions/exchange'
+import { bindActionCreators } from 'redux'
 
 const mapStateToProps = ({ accounts, accountIdTo, accountIdFrom, rates, sumTo, sumFrom }, { isExchangeFrom }) => {
   const accountFrom = accounts[accountIdFrom]
@@ -17,14 +19,13 @@ const mapStateToProps = ({ accounts, accountIdTo, accountIdFrom, rates, sumTo, s
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  setAccountIdFrom: id => {
-    dispatch(setAccountIdFrom(id))
-  },
-  setAccountIdTo: id => {
-    dispatch(setAccountIdTo(id))
-  }
-})
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    setAccountIdFrom,
+    setAccountIdTo,
+    setSumTo
+  }, dispatch)
+}
 
 const AccountsSliderContainer = connect(
   mapStateToProps,
