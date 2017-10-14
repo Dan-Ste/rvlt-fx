@@ -5,22 +5,18 @@ import { setMoneyTo } from '../actions/exchange'
 import { bindActionCreators } from 'redux'
 import { resetErrorMessage } from '../actions/errorMessage'
 
-const mapStateToProps = ({ accounts, accountIdFrom, accountIdTo, rates, moneyTo, moneyFrom, errorMessage }, { isExchangeFrom }) => {
+const mapStateToProps = ({ accounts, accountIdFrom, accountIdTo, rates, moneyFrom }, { isExchangeFrom }) => {
   const accountFrom = accounts.find(account => account.id === accountIdFrom)
   const accountTo = accounts.find(account => account.id === accountIdTo)
 
-  const rateToFrom = rates[accountTo.currencyISO][accountFrom.currencyISO]
   const rateFromTo = rates[accountFrom.currencyISO][accountTo.currencyISO]
 
   return {
     accounts,
     accountFrom,
     accountTo,
-    rateToFrom,
     rateFromTo,
-    moneyTo,
     moneyFrom,
-    errorMessage,
     isExchangeFrom
   }
 }
