@@ -9,7 +9,6 @@ import {
 export const accounts = function(state = initialState.accounts, action) {
   switch (action.type) {
     case SUBTRACT_MONEY_FROM_ACCOUNT_AMOUNT:
-      debugger
       return state.map(account =>
         account.id === action.id ? { ...account, amount: account.amount - action.sum } : account
       )

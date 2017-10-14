@@ -40,6 +40,7 @@ class MoneyFromInput extends Component {
         className="exchange-input" 
         onChangeEvent={this.handleChange}
         onKeyUp={this.onKeyUp}
+        max={"100"}
       />
     )
   }
