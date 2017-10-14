@@ -1,0 +1,15 @@
+.app {
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 50%;
+  background: #0575e6;
+  background: linear-gradient(to right, #0575e6, #021b79);
+  color: white;
+}
+
+.arrow-clip {
+  clip-path: polygon(0% 0%, 46% 0, 50% 4%, 54% 0, 100% 0, 100% 100%, 0 100%);
+  background-color: rgba(0, 0, 0, 0.15)
+}

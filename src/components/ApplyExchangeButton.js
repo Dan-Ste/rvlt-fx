@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ApplyExchangeWrapper from '../containers/ApplyExchangeWrapper'
 import PropTypes from 'prop-types'
+import '../styles/apply-exchange-button.css'
 
 class ApplyExchangeButton extends Component {
   render() {
@@ -13,7 +14,7 @@ class ApplyExchangeButton extends Component {
     return (
       <button
         disabled={!moneyFrom || !moneyTo}
-        className="apply-exchange" 
+        className="apply-exchange-button" 
         onClick={applyExchange}>
           Exchange
       </button>

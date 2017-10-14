@@ -3,6 +3,7 @@ import CurrencyInput from 'react-currency-input'
 import convertMoneyByRate from '../utils/convertMoneyByRate'
 import ApplyExchangeWrapper from '../containers/ApplyExchangeWrapper'
 import PropTypes from 'prop-types'
+import '../styles/money-input.css'
 
 class MoneyInput extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class MoneyInput extends Component {
         value={this.props.moneyFrom} 
         allowEmpty={true} 
         prefix="-" 
-        className="exchange-input" 
+        className="money-input" 
         onChangeEvent={this.handleChange}
         onKeyUp={this.onKeyUp}
       />

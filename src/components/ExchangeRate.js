@@ -24,4 +24,10 @@ class ExchangeRate extends Component {
   }
 }
 
+ExchangeRate.propTypes = {
+  fromSign: PropTypes.string.isRequired,
+  toSign: PropTypes.string.isRequired,
+  rate: PropTypes.number,
+}
+
 export default ExchangeRate

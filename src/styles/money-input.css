@@ -1,0 +1,15 @@
+.money-input {
+  border: none;
+  padding: 0;
+  overflow: hidden;
+  max-width: 60%;
+
+  background: transparent;
+  caret-color: white;
+  color: white;
+
+  text-align: right;
+  outline: none;
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+}

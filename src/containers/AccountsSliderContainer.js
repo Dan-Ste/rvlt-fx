@@ -11,6 +11,7 @@ const mapStateToProps = ({ accounts, accountIdFrom, accountIdTo, rates, moneyFro
 
   const rateFromTo = rates[accountFrom.currencyISO][accountTo.currencyISO]
 
+  console.log('slider-cont', moneyFrom, accountFrom.currencyISO, accountTo.currencyISO, rateFromTo)
   return {
     accounts,
     accountFrom,

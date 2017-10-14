@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import AccountsSliderContainer from '../containers/AccountsSliderContainer'
 import ApplyExchangeButton from '../components/ApplyExchangeButton'
+import '../styles/app.css'
 
 class App extends Component {
   render() {
@@ -8,7 +9,9 @@ class App extends Component {
       <div className="app">
         <ApplyExchangeButton/>
         <AccountsSliderContainer isExchangeFrom={true}/>
-        <AccountsSliderContainer />
+        <div className="arrow-clip">
+          <AccountsSliderContainer />
+        </div>
       </div>
     )
   }

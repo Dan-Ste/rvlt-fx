@@ -23,7 +23,7 @@ export class AccountsSlider extends Component {
     const currentAccount = isExchangeFrom ?
       accountFrom :
       accountTo
-
+      
     const sliderSettings = {
       dots: true,
       infinite: true,
@@ -33,13 +33,15 @@ export class AccountsSlider extends Component {
       arrows: false,
       initialSlide: currentAccount.id,
       afterChange(idx) {
+        resetErrorMessage()
+
         if (isExchangeFrom) {
           setAccountIdFrom(idx)
         } else {
           setAccountIdTo(idx)
         }
 
-        resetErrorMessage()
+        console.log('slider-comp', moneyFrom, accountFrom.currencyISO, accountTo.currencyISO, rateFromTo)
         setMoneyTo(convertMoneyByRate(moneyFrom, rateFromTo))
       }
     }

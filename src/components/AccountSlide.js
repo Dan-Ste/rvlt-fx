@@ -24,16 +24,10 @@ class AccountsSlider extends Component {
       amount
     } = account
 
-    const withArrow = !isExchangeFrom ? {
-      clipPath: 'polygon(0% 0%, 46% 0, 50% 4%, 54% 0, 100% 0, 100% 100%, 0 100%)',
-      backgroundColor: 'rgba(0, 0, 0, 0.15)'
-    } :
-    null
-
     return (
-      <div className="account-slide" style={withArrow}>
+      <div className="account-slide">
         <div className="money-row">
-          <div className="account-currency">{currencyISO}</div>
+          <div>{currencyISO}</div>
           {isExchangeFrom ? (
             <MoneyInputContainer/> 
           ) : (
@@ -41,19 +35,31 @@ class AccountsSlider extends Component {
           )}
         </div>
         <div className="info-row">
-          <div className="account-amount">
+          <div>
             You have <span className="currency-sign">{currencySign}</span>{amount.toFixed(2)}
           </div>
           {isExchangeFrom ? (
-            <ExchangeRate fromSign={currencySign} toSign={accountTo.currencySign} rate={rateFromTo}/>
+            <ExchangeRate fromSign={accountFrom.currencySign} toSign={accountTo.currencySign} rate={rateFromTo}/>
           ) : (
-            <ExchangeRate fromSign={currencySign} toSign={accountFrom.currencySign} rate={rateToFrom}/>
+            <ExchangeRate fromSign={accountTo.currencySign} toSign={accountFrom.currencySign} rate={rateToFrom}/>
           )}
         </div>
           {!isExchangeFrom && errorMessage && <div className="error-message">{errorMessage}</div>}
       </div>
     )
   }
+}
+
+AccountsSlider.propTypes = {
+  account: PropTypes.object.isRequired,
+  accountTo: PropTypes.object.isRequired,
+  accountFrom: PropTypes.object.isRequired,
+  moneyFrom: PropTypes.number,
+  moneyTo: PropTypes.number,
+  rateFromTo: PropTypes.number,
+  rateToFrom: PropTypes.number,
+  errorMessage: PropTypes.string,
+  isExchangeFrom: PropTypes.bool
 }
 
 export default AccountsSlider

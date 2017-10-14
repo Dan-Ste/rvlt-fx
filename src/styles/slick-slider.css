@@ -1,0 +1,32 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css"; 
+
+.slick-slider, .slick-list, .slick-track {
+  height: 100%;
+}
+
+.slick-list {
+  z-index: 2;
+}
+
+.slick-dots li, .slick-dots li button, .slick-dots li button:before  {
+  width: 10px;
+  height: 10px;
+}
+.slick-dots li {
+  margin: 0 3px;
+}
+
+.slick-dots li button:before {
+  font-size: 7px;
+  line-height: 10px;
+  color: white;
+}
+
+.slick-dots li.slick-active button:before {
+  color: white;
+}
+
+.slick-dots {
+  bottom: 1.5em;
+}

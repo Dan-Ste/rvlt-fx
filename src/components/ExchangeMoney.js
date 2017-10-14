@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import '../styles/exchange-money.css'
 
 class ExchangeMoney extends Component {
   render() {
@@ -22,6 +23,11 @@ class ExchangeMoney extends Component {
       return null
     }
   }
+}
+
+ExchangeMoney.propTypes = {
+  moneyFrom: PropTypes.number,
+  moneyTo: PropTypes.number
 }
 
 export default ExchangeMoney

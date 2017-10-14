@@ -7,6 +7,7 @@ import reducer from './reducers';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import './styles/index.css';
+import './styles/slick-slider.css';
 import { fetchRates } from './actions/rates';
 
 const store = createStore(
