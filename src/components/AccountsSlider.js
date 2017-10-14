@@ -44,7 +44,8 @@ export class AccountsSlider extends Component {
       accounts,
       accountFrom,
       accountTo,
-      rates,
+      rateFromTo,
+      rateToFrom,
       isExchangeFrom,
       moneyTo,
       moneyFrom,
@@ -55,8 +56,6 @@ export class AccountsSlider extends Component {
       resetErrorMessage
     } = this.props
 
-    const rateToFrom = rates[accountTo.currencyISO][accountFrom.currencyISO]
-    const rateFromTo = rates[accountFrom.currencyISO][accountTo.currencyISO]
     const currentAccount = isExchangeFrom ?
       accountFrom :
       accountTo
@@ -126,7 +125,8 @@ AccountsSlider.propTypes = {
   accounts: PropTypes.arrayOf(PropTypes.object),
   accountFrom: PropTypes.object,
   accountTo: PropTypes.object,
-  rates: PropTypes.object,
+  rateToFrom: PropTypes.number,
+  rateToTo: PropTypes.number,
   isExchangeFrom: PropTypes.bool,
   moneyTo: PropTypes.number,
   moneyFrom: PropTypes.number,
