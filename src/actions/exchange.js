@@ -1,34 +1,34 @@
 import {
-  SET_SUM_FROM,
-  RESET_SUM_FROM,
-  SET_SUM_TO,
-  RESET_SUM_TO
+  SET_MONEY_FROM,
+  RESET_MONEY_FROM,
+  SET_MONEY_TO,
+  RESET_MONEY_TO
 }
 from './actionTypes'
 
-export const setSumFrom = sum => {
+export const setMoneyFrom = money => {
   return {
-    type: SET_SUM_FROM,
-    sum
+    type: SET_MONEY_FROM,
+    money
   }
 }
 
-export const resetSumFrom = sum => {
+export const resetMoneyFrom = money => {
   return {
-    type: RESET_SUM_FROM,
-    sum
+    type: RESET_MONEY_FROM,
+    money
   }
 }
 
-export const setSumTo = sum => {
+export const setMoneyTo = money => {
   return {
-    type: SET_SUM_TO,
-    sum
+    type: SET_MONEY_TO,
+    money
   }
 }
 
-export const resetSumTo = sum => {
+export const resetMoneyTo = money => {
   return {
-    type: RESET_SUM_TO
+    type: RESET_MONEY_TO
   }
 }

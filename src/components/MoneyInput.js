@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import CurrencyInput from 'react-currency-input'
-import convertSumByRate from '../utils/convertSumByRate'
+import convertMoneyByRate from '../utils/convertMoneyByRate'
 import ApplyExchangeWrapper from '../containers/ApplyExchangeWrapper'
 import PropTypes from 'prop-types'
 
@@ -18,26 +18,26 @@ class MoneyInput extends Component {
     }
   }
 
-  handleChange(event, maskedValue, sumFrom) {
+  handleChange(event, maskedValue, moneyFrom) {
     const {
       rateFromTo,
-      setSumFrom,
-      setSumTo,
+      setMoneyFrom,
+      setMoneyTo,
       resetErrorMessage
     } = this.props;
 
-    const sumTo = convertSumByRate(sumFrom, rateFromTo)
+    const moneyTo = convertMoneyByRate(moneyFrom, rateFromTo)
 
     resetErrorMessage()
 
-    setSumFrom(sumFrom)
-    setSumTo(sumTo)
+    setMoneyFrom(moneyFrom)
+    setMoneyTo(moneyTo)
   }
 
   render() {
     return (
       <CurrencyInput 
-        value={this.props.sumFrom} 
+        value={this.props.moneyFrom} 
         allowEmpty={true} 
         prefix="-" 
         ref="exchangeInput" 
@@ -52,8 +52,8 @@ class MoneyInput extends Component {
 
 MoneyInput.propTypes = {
   rateFromTo: PropTypes.number,
-  setSumTo: PropTypes.func,
-  setSumFrom: PropTypes.func,
+  setMoneyTo: PropTypes.func,
+  setMoneyFrom: PropTypes.func,
   resetErrorMessage: PropTypes.func,
   applyExchange: PropTypes.func
 }

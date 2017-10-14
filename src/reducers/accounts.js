@@ -10,11 +10,11 @@ export const accounts = function(state = initialState.accounts, action) {
   switch (action.type) {
     case SUBTRACT_MONEY_FROM_ACCOUNT_AMOUNT:
       return state.map(account =>
-        account.id === action.id ? { ...account, amount: account.amount - action.sum } : account
+        account.id === action.id ? { ...account, amount: account.amount - action.money } : account
       )
     case ADD_MONEY_TO_ACCOUNT_AMOUNT:
       return state.map(account =>
-        account.id === action.id ? { ...account, amount: account.amount + action.sum } : account
+        account.id === action.id ? { ...account, amount: account.amount + action.money } : account
       )
     default:
       return state

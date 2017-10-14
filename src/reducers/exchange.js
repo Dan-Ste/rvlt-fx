@@ -1,27 +1,27 @@
 import {
-  SET_SUM_FROM,
-  RESET_SUM_FROM,
-  SET_SUM_TO,
-  RESET_SUM_TO
+  SET_MONEY_FROM,
+  RESET_MONEY_FROM,
+  SET_MONEY_TO,
+  RESET_MONEY_TO
 }
 from '../actions/actionTypes'
 
-export const sumFrom = function(state = null, action) {
+export const moneyFrom = function(state = null, action) {
   switch (action.type) {
-    case SET_SUM_FROM:
-      return action.sum
-    case RESET_SUM_FROM:
+    case SET_MONEY_FROM:
+      return action.money
+    case RESET_MONEY_FROM:
       return null;
     default:
       return state
   }
 }
 
-export const sumTo = function(state = null, action) {
+export const moneyTo = function(state = null, action) {
   switch (action.type) {
-    case SET_SUM_TO:
-      return action.sum
-    case RESET_SUM_TO:
+    case SET_MONEY_TO:
+      return action.money
+    case RESET_MONEY_TO:
       return null;
     default:
       return state

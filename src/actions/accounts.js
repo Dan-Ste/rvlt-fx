@@ -15,14 +15,14 @@ export const setAccountIdTo = id => ({
   id
 })
 
-export const subtractMoneyFromAccount = (id, sum) => ({
+export const subtractMoneyFromAccount = (id, money) => ({
   type: SUBTRACT_MONEY_FROM_ACCOUNT_AMOUNT,
   id,
-  sum
+  money
 })
 
-export const addMoneyToAccount = (id, sum) => ({
+export const addMoneyToAccount = (id, money) => ({
   type: ADD_MONEY_TO_ACCOUNT_AMOUNT,
   id,
-  sum
+  money
 })

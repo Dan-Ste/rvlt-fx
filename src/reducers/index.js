@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { accounts, accountIdFrom, accountIdTo } from './accounts';
 import rates from './rates';
-import { sumFrom, sumTo } from './exchange';
+import { moneyFrom, moneyTo } from './exchange';
 import errorMessage from './errorMessage';
 
 const rootReducer = combineReducers({
@@ -9,8 +9,8 @@ const rootReducer = combineReducers({
   accountIdFrom,
   accountIdTo,
   rates,
-  sumFrom,
-  sumTo,
+  moneyFrom,
+  moneyTo,
   errorMessage
 });
 

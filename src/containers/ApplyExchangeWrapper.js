@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { subtractMoneyFromAccount, addMoneyToAccount } from '../actions/accounts'
-import { resetSumFrom, resetSumTo } from '../actions/exchange'
+import { resetMoneyFrom, resetMoneyTo } from '../actions/exchange'
 import { setNotEnoughMoneyError } from '../actions/errorMessage'
 
 function ApplyExchangeWrapper(ComposedComponent) {
@@ -16,28 +16,28 @@ function ApplyExchangeWrapper(ComposedComponent) {
 
     applyExchange() {
       const {
-        sumFrom,
-        sumTo,
+        moneyFrom,
+        moneyTo,
         accountFrom,
         accountIdTo,
 
         boundSetNotEnoughMoneyError,
         boundSubtractMoneyFromAccount,
         boundAddMoneyToAccount,
-        boundResetSumFrom,
-        boundResetSumTo
+        boundResetMoneyFrom,
+        boundResetMoneyTo
       } = this.props
 
       // if there is not enough money on the account, dispatch an error
-      if (accountFrom.amount - sumFrom < 0) {
+      if (accountFrom.amount - moneyFrom < 0) {
         boundSetNotEnoughMoneyError("You don't have enough money for exchange")
       } else {
 
-        boundSubtractMoneyFromAccount(accountFrom.id, sumFrom)
-        boundAddMoneyToAccount(accountIdTo, sumTo)
-
-        boundResetSumFrom()
-        boundResetSumTo()
+        boundSubtractMoneyFromAccount(accountFrom.id, moneyFrom)
+        boundAddMoneyToAccount(accountIdTo, moneyTo)
+        
+        boundResetMoneyFrom()
+        boundResetMoneyTo()
       }
     }
 
@@ -52,23 +52,23 @@ function ApplyExchangeWrapper(ComposedComponent) {
   }
 
   ApplyExchange.PropTypes = {
-    sumFrom: PropTypes.number,
-    sumTo: PropTypes.number,
+    moneyFrom: PropTypes.number,
+    moneyTo: PropTypes.number,
     accountFrom: PropTypes.object,
     accountIdTo: PropTypes.number,
     subtractMoney: PropTypes.func,
     addMoney: PropTypes.func,
-    resetSumFrom: PropTypes.func,
-    resetSumTo: PropTypes.func,
+    resetMoneyFrom: PropTypes.func,
+    resetMoneyTo: PropTypes.func,
     onError: PropTypes.func,
   }
 
-  const mapStateToProps = ({ sumFrom, sumTo, accounts, accountIdFrom, accountIdTo }) => {
+  const mapStateToProps = ({ moneyFrom, moneyTo, accounts, accountIdFrom, accountIdTo }) => {
     const accountFrom = accounts[accountIdFrom]
 
     return {
-      sumFrom,
-      sumTo,
+      moneyFrom,
+      moneyTo,
       accountFrom,
       accountIdTo
     }
@@ -78,8 +78,8 @@ function ApplyExchangeWrapper(ComposedComponent) {
     return bindActionCreators({
       boundSubtractMoneyFromAccount: subtractMoneyFromAccount,
       boundAddMoneyToAccount: addMoneyToAccount,
-      boundResetSumFrom: resetSumFrom,
-      boundResetSumTo: resetSumTo,
+      boundResetMoneyFrom: resetMoneyFrom,
+      boundResetMoneyTo: resetMoneyTo,
       boundSetNotEnoughMoneyError: setNotEnoughMoneyError
     }, dispatch);
   }

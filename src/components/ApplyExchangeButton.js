@@ -5,7 +5,7 @@ class ApplyExchangeButton extends Component {
   render() {
     return (
       <button
-        disabled={!this.props.sumFrom || !this.props.sumTo}
+        disabled={!this.props.moneyFrom || !this.props.moneyTo}
         className="apply-exchange" 
         onClick={this.props.applyExchange}>
           Exchange

@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { setSumFrom, setSumTo } from '../actions/exchange'
+import { setMoneyFrom, setMoneyTo } from '../actions/exchange'
 import { resetErrorMessage } from '../actions/errorMessage'
 import MoneyInput from '../components/MoneyInput'
 
@@ -16,8 +16,8 @@ const mapStateToProps = ({ accounts, accountIdFrom, accountIdTo, rates }) => {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
-    setSumFrom,
-    setSumTo,
+    setMoneyFrom,
+    setMoneyTo,
     resetErrorMessage
   }, dispatch)
 }

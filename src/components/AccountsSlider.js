@@ -1,9 +1,26 @@
 import React, { Component } from 'react'
 import Slider from 'react-slick'
 import PropTypes from 'prop-types'
-import convertSumByRate from '../utils/convertSumByRate'
+import convertMoneyByRate from '../utils/convertMoneyByRate'
 import MoneyInputContainer from '../containers/MoneyInputContainer'
 import '../styles/account-slide.css'
+
+function ExchangeMoney({moneyFrom, moneyTo}) {
+  if (moneyTo && moneyFrom) {
+
+    const exchangeMoney = moneyTo === moneyFrom ?
+      moneyTo :
+      moneyTo.toFixed(2)
+
+    return (
+      <div className="exchange-money">
+        {`+${exchangeMoney}`}
+      </div>
+    )
+  } else {
+    return null
+  }
+}
 
 export class AccountsSlider extends Component {
   buildRateElem(fromSign, toSign, rate) {
@@ -29,12 +46,12 @@ export class AccountsSlider extends Component {
       accountTo,
       rates,
       isExchangeFrom,
-      sumTo,
+      moneyTo,
+      moneyFrom,
       errorMessage,
-      sumFrom,
       setAccountIdFrom,
       setAccountIdTo,
-      setSumTo,
+      setMoneyTo,
       resetErrorMessage
     } = this.props
 
@@ -60,22 +77,19 @@ export class AccountsSlider extends Component {
         }
 
         resetErrorMessage()
-        setSumTo(convertSumByRate(sumFrom, rateFromTo))
+        setMoneyTo(convertMoneyByRate(moneyFrom, rateFromTo))
       }
     }
 
     let rateElem
-    let convertedSum
+    let withArrow
 
     if (!isExchangeFrom) {
       rateElem = this.buildRateElem(accountTo.currencySign, accountFrom.currencySign, rateFromTo)
 
-      if (sumTo && sumFrom) {
-        convertedSum = sumTo === sumFrom ?
-          sumTo :
-          sumTo.toFixed(2)
-
-        convertedSum = `+${convertedSum}`
+      withArrow = {
+        clipPath: 'polygon(0% 0%, 46% 0, 50% 4%, 54% 0, 100% 0, 100% 100%, 0 100%)',
+        backgroundColor: 'rgba(0, 0, 0, 0.15)'
       }
     } else {
       rateElem = this.buildRateElem(accountFrom.currencySign, accountTo.currencySign, rateToFrom)
@@ -87,10 +101,10 @@ export class AccountsSlider extends Component {
         <Slider {...sliderSettings}>
           {accounts.map(account => {
             return  <div key={account.id}>
-                      <div className="account-slide">
+                      <div className="account-slide" style={withArrow}>
                         <div className="money-row">
                           <div className="account-currency">{account.currencyISO}</div>
-                          {isExchangeFrom ? <MoneyInputContainer/> : <div className="exchange-money">{convertedSum}</div>}
+                          {isExchangeFrom ? <MoneyInputContainer/> : <ExchangeMoney moneyFrom={moneyFrom} moneyTo={moneyTo}/>}
                         </div>
                         <div className="info-row">
                           <div className="account-amount">
@@ -114,12 +128,12 @@ AccountsSlider.propTypes = {
   accountTo: PropTypes.object,
   rates: PropTypes.object,
   isExchangeFrom: PropTypes.bool,
-  sumTo: PropTypes.number,
-  sumFrom: PropTypes.number,
+  moneyTo: PropTypes.number,
+  moneyFrom: PropTypes.number,
   errorMessage: PropTypes.string,
   setAccountIdFrom: PropTypes.func,
   setAccountIdTo: PropTypes.func,
-  setSumTo: PropTypes.func,
+  setMoneyTo: PropTypes.func,
   resetErrorMessage: PropTypes.func
 }
 
