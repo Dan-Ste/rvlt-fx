@@ -64,8 +64,8 @@ function ApplyExchangeWrapper(ComposedComponent) {
   }
 
   const mapStateToProps = ({ moneyFrom, moneyTo, accounts, accountIdFrom, accountIdTo }) => {
-    const accountFrom = accounts[accountIdFrom]
-
+    const accountFrom = accounts.find(account => account.id === accountIdFrom)
+    
     return {
       moneyFrom,
       moneyTo,

@@ -23,7 +23,6 @@ store.dispatch(fetchRates())
       </Provider>,
       document.getElementById('root')
     )
-
   })
 
 registerServiceWorker();

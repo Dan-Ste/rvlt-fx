@@ -2,7 +2,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { setMoneyFrom, setMoneyTo } from '../actions/exchange'
 import { resetErrorMessage } from '../actions/errorMessage'
-import MoneyInput from '../components/MoneyInput'
+import MoneyFromInput from '../components/MoneyFromInput'
 
 const mapStateToProps = ({ accounts, accountIdFrom, accountIdTo, rates }) => {
   const accountFrom = accounts.find(account => account.id === accountIdFrom)
@@ -22,9 +22,9 @@ const mapDispatchToProps = dispatch => {
   }, dispatch)
 }
 
-const MoneyInputContainer = connect(
+const MoneyFromInputContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(MoneyInput)
+)(MoneyFromInput)
 
-export default MoneyInputContainer
+export default MoneyFromInputContainer

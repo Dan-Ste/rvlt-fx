@@ -40,17 +40,16 @@ class MoneyInput extends Component {
         value={this.props.moneyFrom} 
         allowEmpty={true} 
         prefix="-" 
-        ref="exchangeInput" 
         className="exchange-input" 
         onChangeEvent={this.handleChange}
         onKeyUp={this.onKeyUp}
-        max={"100"}
       />
     )
   }
 }
 
 MoneyInput.propTypes = {
+  moneyFrom: PropTypes.number,
   rateFromTo: PropTypes.number,
   setMoneyTo: PropTypes.func,
   setMoneyFrom: PropTypes.func,
