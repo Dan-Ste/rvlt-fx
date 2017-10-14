@@ -37,8 +37,26 @@ html, body, #root {
   z-index: 2;
 }
 
+.slick-dots li, .slick-dots li button, .slick-dots li button:before  {
+  width: 10px;
+  height: 10px;
+}
+.slick-dots li {
+  margin: 0 3px;
+}
+
+.slick-dots li button:before {
+  font-size: 7px;
+  line-height: 10px;
+  color: white;
+}
+
+.slick-dots li.slick-active button:before {
+  color: white;
+}
+
 .slick-dots {
-  bottom: 40px;
+  bottom: 1.5em;
 }
 
 .apply-exchange {
@@ -52,6 +70,7 @@ html, body, #root {
   color: white;
   background: transparent;
   font-weight: 300;
+  font-size: 1em;
   line-height: 1;
 }
 
