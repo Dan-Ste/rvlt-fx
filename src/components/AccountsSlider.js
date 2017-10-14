@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Slider from 'react-slick'
 import PropTypes from 'prop-types'
 import convertSumByRate from '../utils/convertSumByRate'
-import MoneyFromInputContainer from '../containers/MoneyFromInputContainer'
+import MoneyInputContainer from '../containers/MoneyInputContainer'
 import '../styles/account-slide.css'
 
 export class AccountsSlider extends Component {
@@ -30,10 +30,12 @@ export class AccountsSlider extends Component {
       rates,
       isExchangeFrom,
       sumTo,
+      errorMessage,
       sumFrom,
       setAccountIdFrom,
       setAccountIdTo,
-      setSumTo
+      setSumTo,
+      resetErrorMessage
     } = this.props
 
     const rateToFrom = rates[accountTo.currencyISO][accountFrom.currencyISO]
@@ -57,6 +59,7 @@ export class AccountsSlider extends Component {
           setAccountIdTo(idx)
         }
 
+        resetErrorMessage()
         setSumTo(convertSumByRate(sumFrom, rateFromTo))
       }
     }
@@ -87,7 +90,7 @@ export class AccountsSlider extends Component {
                       <div className="account-slide">
                         <div className="money-row">
                           <div className="account-currency">{account.currencyISO}</div>
-                          {isExchangeFrom ? <MoneyFromInputContainer/> : <div className="exchange-money">{convertedSum}</div>}
+                          {isExchangeFrom ? <MoneyInputContainer/> : <div className="exchange-money">{convertedSum}</div>}
                         </div>
                         <div className="info-row">
                           <div className="account-amount">
@@ -95,6 +98,7 @@ export class AccountsSlider extends Component {
                           </div>
                           <div className="exchange-rate">{rateElem}</div>
                         </div>
+                          {!isExchangeFrom && <div className="error-message">{errorMessage}</div>}
                       </div>
                     </div>
           })}
@@ -112,9 +116,11 @@ AccountsSlider.propTypes = {
   isExchangeFrom: PropTypes.bool,
   sumTo: PropTypes.number,
   sumFrom: PropTypes.number,
+  errorMessage: PropTypes.string,
   setAccountIdFrom: PropTypes.func,
   setAccountIdTo: PropTypes.func,
-  setSumTo: PropTypes.func
+  setSumTo: PropTypes.func,
+  resetErrorMessage: PropTypes.func
 }
 
 export default AccountsSlider

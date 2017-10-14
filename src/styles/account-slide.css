@@ -12,13 +12,14 @@
   align-items: center;
 }
 
+.money-row {
+  font-size: 2em;
+  margin-bottom: 0.3em;
+}
+
 .info-row {
   font-size: 0.75em;
   opacity: 0.5;
-}
-
-.money-row {
-  font-size: 2em;
   margin-bottom: 0.3em;
 }
 
@@ -41,4 +42,10 @@
   outline: none;
   font-weight: 300;
   font-family: 'Open Sans', sans-serif;
+}
+
+.error-message {
+  flex: none;
+  font-size: 0.75em;
+  color: tomato;
 }

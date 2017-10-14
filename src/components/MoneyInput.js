@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import CurrencyInput from 'react-currency-input'
 import convertSumByRate from '../utils/convertSumByRate'
 import ApplyExchangeWrapper from '../containers/ApplyExchangeWrapper'
+import PropTypes from 'prop-types'
 
-class MoneyFromInput extends Component {
+class MoneyInput extends Component {
   constructor(props) {
     super(props);
 
@@ -21,10 +22,13 @@ class MoneyFromInput extends Component {
     const {
       rateFromTo,
       setSumFrom,
-      setSumTo
+      setSumTo,
+      resetErrorMessage
     } = this.props;
 
     const sumTo = convertSumByRate(sumFrom, rateFromTo)
+
+    resetErrorMessage()
 
     setSumFrom(sumFrom)
     setSumTo(sumTo)
@@ -46,4 +50,12 @@ class MoneyFromInput extends Component {
   }
 }
 
-export default ApplyExchangeWrapper(MoneyFromInput)
+MoneyInput.propTypes = {
+  rateFromTo: PropTypes.number,
+  setSumTo: PropTypes.func,
+  setSumFrom: PropTypes.func,
+  resetErrorMessage: PropTypes.func,
+  applyExchange: PropTypes.func
+}
+
+export default ApplyExchangeWrapper(MoneyInput)

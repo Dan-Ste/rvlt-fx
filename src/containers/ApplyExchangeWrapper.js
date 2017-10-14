@@ -30,7 +30,7 @@ function ApplyExchangeWrapper(ComposedComponent) {
 
       // if there is not enough money on the account, dispatch an error
       if (accountFrom.amount - sumFrom < 0) {
-        boundSetNotEnoughMoneyError("You don't have enough money for the exchange")
+        boundSetNotEnoughMoneyError("You don't have enough money for exchange")
       } else {
 
         boundSubtractMoneyFromAccount(accountFrom.id, sumFrom)

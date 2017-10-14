@@ -3,8 +3,9 @@ import AccountsSlider from '../components/AccountsSlider'
 import { setAccountIdFrom, setAccountIdTo } from '../actions/accounts'
 import { setSumTo } from '../actions/exchange'
 import { bindActionCreators } from 'redux'
+import { resetErrorMessage } from '../actions/errorMessage'
 
-const mapStateToProps = ({ accounts, accountIdTo, accountIdFrom, rates, sumTo, sumFrom }, { isExchangeFrom }) => {
+const mapStateToProps = ({ accounts, accountIdTo, accountIdFrom, rates, sumTo, sumFrom, errorMessage }, { isExchangeFrom }) => {
   const accountFrom = accounts[accountIdFrom]
   const accountTo = accounts[accountIdTo]
 
@@ -15,6 +16,7 @@ const mapStateToProps = ({ accounts, accountIdTo, accountIdFrom, rates, sumTo, s
     rates,
     sumTo,
     sumFrom,
+    errorMessage,
     isExchangeFrom
   }
 }
@@ -23,7 +25,8 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators({
     setAccountIdFrom,
     setAccountIdTo,
-    setSumTo
+    setSumTo,
+    resetErrorMessage
   }, dispatch)
 }
 
